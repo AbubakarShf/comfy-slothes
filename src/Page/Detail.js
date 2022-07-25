@@ -1,11 +1,22 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
-import Picture from "./Picture";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CartContext from "../useContext/CartContext";
-import { Link } from "react-router-dom";
+import Picture from "./Picture";
 const Detail = () => {
-  const [selectedImg, setSelectedImg] = useState(Picture[0]);
+  const [selectedImg, setSelectedImg] = useState(Picture[0].img);
+  const [DefaultImg, setDefaultImg] = useState("");
+  const imgHandler1 = () => {
+    setSelectedImg(Picture[0].img);
+  };
+  const imgHandler2 = () => {
+    setSelectedImg(Picture[1].img);
+  };
+  const imgHandler3 = () => {
+    setSelectedImg(Picture[2].img);
+  };
+  const imgHandler4 = () => {
+    setSelectedImg(Picture[3].img);
+  };
   const goTo = useNavigate();
   const { detailId } = useParams();
   const { products, handleAddToCart, handleDecrease, addQty } =
@@ -27,6 +38,7 @@ const Detail = () => {
           colors,
         }) => {
           if (detailId == id) {
+            {/* setDefaultImg(img); */}
             return (
               <div className="mt-10 w-full">
                 <div className="bg-[#eaded7] text-[#b99179] md:text-4xl text-2xl px-2 spa py-10 w-full md:px-40 ">
@@ -36,11 +48,17 @@ const Detail = () => {
 
                 <div className="mt-20 md:px-16 px-8 flex gap-10 w-full md:flex-row flex-wrap justify-center py-10">
                   <div className="img">
-                    <img src={img} className="w-[517px] h-[500px]" />
+                    <img
+                      src={selectedImg}
+                      className="w-[517px] h-[500px]"
+                    />
                     <div className="flex md:flex-row flex-wrap justify-center  md:gap-8 gap-2 mt-5 cursor-pointer ">
-                      {Picture.map((img, index) => (
-                        <img key={id} id={id} src={img} index={index} />
-                      ))}
+
+                        <img className="w-[100px] h-[80px]" src={Picture[0].img} onClick={imgHandler1} />
+                        <img className="w-[100px] h-[80px]" src={Picture[1].img} onClick={imgHandler2} />
+                        <img className="w-[100px] h-[80px]" src={Picture[2].img} onClick={imgHandler3} />
+                        <img className="w-[100px] h-[80px]" src={Picture[3].img} onClick={imgHandler4} />
+
                     </div>
                   </div>
                   <div className="w-[650px]">
