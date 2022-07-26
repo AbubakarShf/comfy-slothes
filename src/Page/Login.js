@@ -1,28 +1,14 @@
 import React, { useState } from "react";
-import { signInWithPopup, signOut } from "firebase/auth";
-import {
-  auth,
-  googleProvider,
-  twitterProvider,
-} from "../backend/firebaseConfig";
+// import {
+//   signInWithGoogle
+// } from "../backend/firebaseConfig";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
 
-  const handleSignInWithGoogle = () => {
-    // alert("working");
-    signInWithPopup(auth, googleProvider).catch((err) =>
-      console.log(err.message)
-    );
-  };
-  const handleSignInWithTwitter = () => {
-    // alert("working");
-    signInWithPopup(auth, twitterProvider).catch((err) =>
-      console.log(err.message)
-    );
-  };
   return (
-    <div className="py-44">
+<>
+<div className="py-44">
       <div className="border-2   md:max-w-sm max-w-[250px]   mt-20 mx-auto">
         <div className="text-center bg-gray-100 py-10 px-6 mb-3">
           <h1 className="mb-4 text-2xl font-bold">Logo</h1>
@@ -44,15 +30,14 @@ const Login = () => {
         <div className="flex flex-col justify-center text-center ">
           <div>
             <button
-              onClick={handleSignInWithGoogle}
+
               className="border-2 px-10 "
             >
-              Sign up with google
+              Google SignIn
             </button>
           </div>
           <div>
             <button
-              onClick={handleSignInWithTwitter}
               className="mt-4 border-2 px-10 "
             >
               Sign up with Twitter
@@ -71,7 +56,7 @@ const Login = () => {
             className="py-2 border-2 p-2 w-[220px] "
           />
           <button
-            className="mt-4 text-center bg-blue-700 text-white py-2 w-[220px] 
+            className="mt-4 text-center bg-blue-700 text-white py-2 w-[220px]
             cursor-pointer"
           >
             Sign Up
@@ -85,6 +70,9 @@ const Login = () => {
         </form>
       </div>
     </div>
+      {/* <button onClick={signInWithGoogle} >Google SignIn</button> */}
+
+    </>
   );
 };
 

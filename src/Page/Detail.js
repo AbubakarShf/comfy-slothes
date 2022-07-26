@@ -4,7 +4,9 @@ import CartContext from "../useContext/CartContext";
 import Picture from "./Picture";
 const Detail = () => {
   const [selectedImg, setSelectedImg] = useState(Picture[0].img);
-  const [DefaultImg, setDefaultImg] = useState("");
+  const imgHandler0 = () => {
+    setSelectedImg(Picture[0].MainImg);
+  };
   const imgHandler1 = () => {
     setSelectedImg(Picture[0].img);
   };
@@ -54,6 +56,7 @@ const Detail = () => {
                     />
                     <div className="flex md:flex-row flex-wrap justify-center  md:gap-8 gap-2 mt-5 cursor-pointer ">
 
+                        <img className="w-[100px] h-[80px]" src={Picture[0].MainImg} onClick={imgHandler0} />
                         <img className="w-[100px] h-[80px]" src={Picture[0].img} onClick={imgHandler1} />
                         <img className="w-[100px] h-[80px]" src={Picture[1].img} onClick={imgHandler2} />
                         <img className="w-[100px] h-[80px]" src={Picture[2].img} onClick={imgHandler3} />

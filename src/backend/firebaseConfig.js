@@ -1,8 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  GoogleAuthProvider,
-  TwitterAuthProvider,
+  GoogleAuthProvider, signInWithPopup
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -18,8 +17,23 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
-const auth = getAuth();
+const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-const twitterProvider = new TwitterAuthProvider();
+// const twitterProvider = new TwitterAuthProvider();
+const signInWithGoogle=()=>{
+  signInWithPopup(auth, googleProvider).then((result)=>{
+const name=result.user.displayName;
+const email=result.user.email;
+const photoURL=result.user.photoURL;
 
-export { auth, db, googleProvider, twitterProvider };
+localStorage.setItem("name",name);
+localStorage.setItem("email",email);
+localStorage.setItem("photoURL",photoURL);
+
+}).catch((error) => {
+console.log(error)
+  })
+}
+
+export { auth, db, googleProvider, signInWithGoogle };
+

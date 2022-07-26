@@ -9,7 +9,6 @@ import Search from "../Filter/Search"
 import CartContext from "../useContext/CartContext"
 const Products = () => {
   const { products } = useContext(CartContext)
-  // const { price } = useContext(PriceContext)
   return (
     <>
       <div className='bg-[#eaded7] text-[#b99179] md:text-4xl text-2xl px-10 py-10 w-full md:px-20 '>
@@ -38,20 +37,7 @@ const Products = () => {
                 img={item.img}
               />
             ))}
-          {/* {products
-            .filter((item) => {
-              return item.price >= price
-            })
-            .map((item) => (
-              <Product
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                price={item.price}
-                handleNav={item.handleNav}
-                img={item.img}
-              />
-            ))} */}
+
         </div>
       </div>
     </>
